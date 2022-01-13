@@ -7,15 +7,16 @@ class Header extends Component {
     constructor(props) {
         super(props);
 
-        this.state = {
-            isNavOpen: false,
-        };
-        
         this.toggleNav = this.toggleNav.bind(this);
+        this.state = {
+            isNavOpen: false
+        };
     }
 
     toggleNav() {
-        this.setState({ isNavOpen: !this.state.isNav})
+        this.setState({ 
+            isNavOpen: !this.state.isNa
+        });
     }
     render() {
         return(
