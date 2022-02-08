@@ -3,7 +3,6 @@ import { Card, CardImg, CardText, CardBody, CardTitle, Breadcrumb, BreadcrumbIte
 import { Link } from 'react-router-dom';
 import { Control, LocalForm, Errors } from 'react-redux-form';
 
-const required = (val) => val && val.length;
 const maxLength = (len) => (val) => !(val) || (val.length <= len);
 const minLength = (len) => (val) => val && (val.length >= len);
 
@@ -11,25 +10,22 @@ class CommentForm extends Component {
 
     constructor(props) {
         super(props);
-
-        this.toggleModal = this.toggleModal.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
-        
+ 
         this.state = {
           isNavOpen: false,
           isModalOpen: false
         };
     }
 
-    toggleModal() {
+    toggleModal = () => {
         this.setState({
           isModalOpen: !this.state.isModalOpen
         });
     }
 
-    handleSubmit(values) {
+    handleSubmit = (values) => {
         this.toggleModal();
-        this.props.postComment(this.props.dishId, values.rating, values.comment);
+        this.props.addComment(this.props.dishId, values.rating, values.author, values.comment);
     }
 
     render() {
@@ -54,20 +50,19 @@ class CommentForm extends Component {
                     </Row>
                     <Row className="form-group">
                         <Col>
-                        <Label htmlFor="firstname">First Name</Label>
-                            <Control.text model=".firstname" id="firstname" name="firstname"
-                                placeholder="First Name"
+                        <Label htmlFor="author">Your Name</Label>
+                            <Control.text model=".author" id="author" name="author"
+                                placeholder="your Name"
                                 className="form-control"
                                 validators={{
-                                    required, minLength: minLength(3), maxLength: maxLength(15)
+                                    minLength: minLength(3), maxLength: maxLength(15)
                                 }}
                                 />
                             <Errors
                                 className="text-danger"
-                                model=".firstname"
+                                model=".author"
                                 show="touched"
                                 messages={{
-                                    required: 'Required',
                                     minLength: 'Must be greater than 2 characters',
                                     maxLength: 'Must be 15 characters or less'
                                 }}
@@ -111,7 +106,8 @@ class CommentForm extends Component {
                 <div></div>
             );
     }
-    function RenderComments({comments, postComment, dishId}) {
+
+    function RenderComments({comments, addComment, dishId}) {
         if (comments != null) {
             return (
                 <div className="col-12 col-md-5 m-1">
@@ -125,7 +121,7 @@ class CommentForm extends Component {
                         </ul>
                     )
                     )}
-                    <CommentForm dishId={dishId} postComment={postComment} />
+                    <CommentForm dishId={dishId} addComment={addComment}/>
                 </div>
             );
         }
@@ -153,9 +149,8 @@ class CommentForm extends Component {
                 <div className="row">
                   <RenderDish dish={props.dish} />
                   <RenderComments comments={props.comments}
-                    postComment={props.postComment}
-                    dishId={props.dish._id}
-                   />
+                    addComment={props.addComment}
+                    dishId={props.dish.id} />
                 </div>
               </div>
             );
