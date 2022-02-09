@@ -2,7 +2,6 @@ import React from 'react';
 import { Card, CardImg, CardText, CardBody, CardTitle } from 'reactstrap';
 
     function RenderDish({dish}) {
-        if (dish != null)
             return (
               <div className="col-12 col-md-5 m-1">
                 <Card>
@@ -13,10 +12,6 @@ import { Card, CardImg, CardText, CardBody, CardTitle } from 'reactstrap';
                     </CardBody>
                 </Card>
               </div>
-            );
-        else
-            return (
-                <div></div>
             );
     }
     function RenderComments({comments}) {
