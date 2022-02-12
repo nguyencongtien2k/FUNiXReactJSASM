@@ -24,10 +24,10 @@ class Info extends Component {
     }
 
     render() {
-        if (this.props.selectStaff != null) {
+        if (this.props.staff) {
             return (
-                <div>
-                    {this.renderInfo(this.props.selectStaff)}
+                <div className="container">
+                    {this.renderInfo(this.props.staff)}
                 </div>
             );
         } else {
