@@ -1,35 +1,36 @@
 import React, { Component } from 'react';
 import StaffList from './StaffList';
-import Info from './Info';
 import { STAFFS, DEPARTMENTS } from '../shared/staffs';
 import Header from './Header';
 import Footer from './Footer';
+import Depart from './Depart';
+import Payroll from './Payroll';
+import { Switch, Route, Redirect } from 'react-router-dom';
 
-class Main extends Component {
-    constructor(props) {
-        super(props);
+    class Main extends Component {
+        constructor(props) {
+            super(props);
 
-        this.state = {
-            staffs: STAFFS,
-            departments: DEPARTMENTS,
-            selectStaff: null
+            this.state = {
+                staffs: STAFFS,
+                departments: DEPARTMENTS,
+            }
+        }
+
+        render() {
+            return (
+                <div>
+                    <Header />
+                    <Switch>
+                        <Route path="/staffs" component={() => <StaffList staffs={this.state.staffs} /> } />
+                        <Route path="/depart" component={() => <Depart departments={this.state.departments} /> } />
+                        <Route path="/payroll" component={() => <Payroll staffs={this.state.staffs} /> } />
+                        <Redirect to='/staffs' />
+                    </Switch>
+                    <Footer />
+                </div>
+            );
         }
     }
 
-    onSelectStaff = (staffId) => {
-        this.setState({ selectStaff: staffId });
-    }
-
-    render() {
-        return (
-            <div>
-                <Header />
-                <StaffList staffs={this.state.staffs} onClick={(staffId) => this.onSelectStaff(staffId)} />
-                <Info staff={this.state.staffs.filter((staff) => staff.id === this.state.selectStaff)[0]} /> <br />
-                <Footer />
-            </div>
-        );
-    }
-}
-
-export default Main;
+    export default Main;

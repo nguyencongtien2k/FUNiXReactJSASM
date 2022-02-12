@@ -27,6 +27,5 @@ const StaffList = (props) => {
     </div>
   );
 }
-    
 
 export default StaffList;
