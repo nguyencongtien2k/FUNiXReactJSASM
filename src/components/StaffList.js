@@ -1,74 +1,40 @@
 import React, { Component } from 'react';
-import { Media } from 'reactstrap';
+import { Card, CardImg } from 'reactstrap';
+import Info from './Info';
 
 class StaffList extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            staffs: [
-                {
-                  id: 0,
-                  name:'Uthappizza',
-                  image: 'assets/images/uthappizza.png',
-                  category: 'mains',
-                  label:'Hot',
-                  price:'4.99',
-                  description:'A unique combination of Indian Uthappam (pancake) and Italian pizza, topped with Cerignola olives, ripe vine cherry tomatoes, Vidalia onion, Guntur chillies and Buffalo Paneer.'                        },
-               {
-                  id: 1,
-                  name:'Zucchipakoda',
-                  image: 'assets/images/zucchipakoda.png',
-                  category: 'appetizer',
-                  label:'',
-                  price:'1.99',
-                  description:'Deep fried Zucchini coated with mildly spiced Chickpea flour batter accompanied with a sweet-tangy tamarind sauce'                        },
-               {
-                  id: 2,
-                  name:'Vadonut',
-                  image: 'assets/images/vadonut.png',
-                  category: 'appetizer',
-                  label:'New',
-                  price:'1.99',
-                  description:'A quintessential ConFusion experience, is it a vada or is it a donut?'                        },
-               {
-                  id: 3,
-                  name:'ElaiCheese Cake',
-                  image: 'assets/images/elaicheesecake.png',
-                  category: 'dessert',
-                  label:'',
-                  price:'2.99',
-                  description:'A delectable, semi-sweet New York Style Cheese Cake, with Graham cracker crust and spiced with Indian cardamoms'                        }
-               ],
-        };
-    }
+  constructor(props) {
+      super(props);
+      this.state = {
+          selectStaff: null
+      };
+  }
 
-    render() {
-        const staff = this.state.staffs.map((staff) => {
-            return (
-              <div key={staff.id} className="col-12 mt-5">
-                <Media tag="li">
-                  <Media left middle>
-                      <Media object src={staff.image} alt={staff.name} />
-                  </Media>
-                  <Media body className="ml-5">
-                    <Media heading>{staff.name}</Media>
-                    <p>{staff.description}</p>
-                  </Media>
-                </Media>
-              </div>
-            );
-        });
+  onSelectStaff = (staff) => {
+    this.setState({ selectStaff: staff });
+  }
 
+  render() {
+    const staff = this.props.staffs.map((staff) => {
         return (
-          <div className="container">
-            <div className="row">
-              <Media list>
-                  { staff }
-              </Media>
-            </div>
+          <div key={staff.id} className="col-12 col-sm-4 col-md-2 mt-3">
+            <Card onClick={() => {this.onSelectStaff(staff)}}>
+              <CardImg src={staff.image} alt={staff.name} />
+              <h4 className='nameStaff'>{staff.name}</h4>
+            </Card>
           </div>
         );
-    }
+    });
+
+    return (
+      <div className="container">
+        <div className="row">
+          {staff}
+        </div>
+        <Info selectStaff={this.state.selectStaff} />
+      </div>
+    );
+  }
 }
 
 export default StaffList;
