@@ -2,6 +2,10 @@
     text-align: center;
 }
 
+.mrColl {
+    float: left;
+}
+
 .row-header{
     margin:0px auto;
     padding:0px auto;
@@ -15,7 +19,7 @@
 }
 
 .footer{
-    background-color: #06afe2;
+    background-color: #D1C4E9;
     margin:0px auto;
     padding: 20px 0px 20px 0px;
 }
@@ -33,5 +37,5 @@ address{
 }
 
 .navbar-dark {
-    background-color: #2a4de7;
+    background-color: #512DA8;
 }

@@ -3,8 +3,8 @@ import { Card, CardTitle, CardBody, CardText } from "reactstrap";
     
     function RenderDepart({depart}) {
         return (
-            <div className='col-12 col-sm-6 col-md-4 mt-3 mb-3'>
-                <Card key={depart.id}>
+            <div key={depart.id} className='col-12 col-sm-6 col-md-4 mt-3 mb-3'>
+                <Card>
                     <CardTitle>{depart.name}</CardTitle>
                     <CardBody>
                         <CardText>Số lượng nhân viên: {depart.numberOfStaff}</CardText>
