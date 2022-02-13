@@ -1,13 +1,13 @@
 import React from 'react';
-import { Card, CardTitle, CardBody, CardText } from "reactstrap";
+import { Card, CardBody, CardText } from "reactstrap";
     
     function RenderDepart({depart}) {
         return (
             <div key={depart.id} className='col-12 col-sm-6 col-md-4 mt-3 mb-3'>
                 <Card>
-                    <CardTitle>{depart.name}</CardTitle>
+                    <h3>{depart.name}</h3>
                     <CardBody>
-                        <CardText>Số lượng nhân viên: {depart.numberOfStaff}</CardText>
+                        <CardText><strong>Số lượng nhân viên: {depart.numberOfStaff}</strong></CardText>
                     </CardBody>
                 </Card>
             </div>

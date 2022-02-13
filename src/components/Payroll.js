@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, CardTitle, CardBody, CardText, Breadcrumb, BreadcrumbItem } from "reactstrap";
+import { Card, CardBody, CardText, Breadcrumb, BreadcrumbItem } from "reactstrap";
 import { Link } from 'react-router-dom';
 
     function RenderPayroll({staff}) {
@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom';
         return(
             <div className="col-12 col-sm-6 col-md-4 mt-3 mb-3">
                 <Card key={staff.id} className="color1">
-                    <CardTitle className="nag">{staff.name}</CardTitle>
+                    <h3 className="nag">{staff.name}</h3>
                     <CardBody>
                         <CardText>Mã nhân viên: {staff.id}</CardText>
                         <CardText>Hệ số lương: {staff.salaryScale}</CardText>
