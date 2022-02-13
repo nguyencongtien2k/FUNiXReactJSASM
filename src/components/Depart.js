@@ -3,7 +3,7 @@ import { Card, CardBody, CardText } from "reactstrap";
     
     function RenderDepart({depart}) {
         return (
-            <div key={depart.id} className='col-12 col-sm-6 col-md-4 mt-3 mb-3'>
+            <div className='col-12 col-sm-6 col-md-4 mt-3 mb-3'>
                 <Card>
                     <h3>{depart.name}</h3>
                     <CardBody>
@@ -17,7 +17,7 @@ import { Card, CardBody, CardText } from "reactstrap";
     const Depart = (props) => {
         const depart = props.departments.map(depart =>{
             return (
-                <RenderDepart depart={depart} />
+                <RenderDepart key={depart.id} depart={depart} />
             )
         });
 

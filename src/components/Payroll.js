@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
         const salary = (staff.salaryScale * basicSalary) + (staff.overTime * overTimeSalary);
         return(
             <div className="col-12 col-sm-6 col-md-4 mt-3 mb-3">
-                <Card key={staff.id} className="color1">
+                <Card className="color1">
                     <h3 className="nag">{staff.name}</h3>
                     <CardBody>
                         <CardText>Mã nhân viên: {staff.id}</CardText>
@@ -25,7 +25,7 @@ import { Link } from 'react-router-dom';
     const Payroll = (props) => {
         const money = props.staffs.map((staff) => {
             return(
-                <RenderPayroll staff={staff} /> 
+                <RenderPayroll  key={staff.id} staff={staff} /> 
             )
         });
         
