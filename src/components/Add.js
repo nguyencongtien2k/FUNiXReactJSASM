@@ -13,7 +13,11 @@ class Add extends Component {
             doB: '',
             salaryScale: 1,
             startDate: '',
-            department: {},
+            department: {
+                id: '',
+                name: '',
+                numberOfStaff: 0
+            },
             annualLeave: 0,
             overTime: 0,
             message: '',
@@ -149,10 +153,10 @@ class Add extends Component {
                                     <Col md={9}>
                                         <Input  type="select" name="department" 
                                                 className="form-control" 
-                                                value={this.state.department}
+                                                value={this.state.department.name}
                                                 onChange={this.onChange} >
                                             {this.state.departments.map(department => (
-                                                <option key={department.id} value={department.name}>{department.name}</option>
+                                                <option key={department.id}>{department.name}</option>
                                             ))}
                                         </Input>
                                     </Col>

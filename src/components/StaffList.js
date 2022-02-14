@@ -23,9 +23,23 @@ class StaffList extends Component {
 
     onSubmit = (data) => {
         var { staffs } = this.state;
-        data.id = this.generateID();
-        data.image = '/assets/images/alberto.png';
-        staffs.push(data);
+        var newStaff = {
+            id: this.generateID(),
+            name: data.name,
+            doB: data.doB,
+            salaryScale: data.salaryScale,
+            startDate: data.startDate,
+            department: {
+                id: '',
+                name: data.department
+            },
+            annualLeave: data.annualLeave,
+            overTime: data.overTime,
+            image: '/assets/images/alberto.png'
+        };
+        // data.id = this.generateID();
+        // data.image = '/assets/images/alberto.png';
+        staffs.push(newStaff);
         this.setState({staffs: staffs});
 
         localStorage.setItem('staffs', JSON.stringify(staffs));
