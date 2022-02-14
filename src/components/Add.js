@@ -40,8 +40,6 @@ class Add extends Component {
     }
 
     onChange = (event) => {
-        // console.log(event.target.value); 
-        // console.log(event.target.name)
         var target = event.target;
         var value = target.value;
         var name = target.name;

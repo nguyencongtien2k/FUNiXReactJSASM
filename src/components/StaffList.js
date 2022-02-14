@@ -37,8 +37,6 @@ class StaffList extends Component {
             overTime: data.overTime,
             image: '/assets/images/alberto.png'
         };
-        // data.id = this.generateID();
-        // data.image = '/assets/images/alberto.png';
         staffs.push(newStaff);
         this.setState({staffs: staffs});
 
