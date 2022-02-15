@@ -2,13 +2,17 @@ import React, { Component } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, Col, Label, Row } from 'reactstrap';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { Control, LocalForm } from 'react-redux-form';
+import { Control, LocalForm, Errors } from 'react-redux-form';
 
 const mapStateToProps = state => {
     return {
         departments: state.departments
     }
 }
+
+const required = (val) => val && val.length;
+const maxLength = (len) => (val) => !(val) || (val.length <= len);
+const minLength = (len) => (val) => val && (val.length >= len);
 
 class Add extends Component {
     constructor(props) {
@@ -53,7 +57,22 @@ class Add extends Component {
                                     <Control.text model='.name' name="name"
                                         className="form-control" 
                                         onChange={this.onChange}
+                                        validators={{
+                                            required,
+                                            minLength: minLength(3),
+                                            maxLength: maxLength(30)
+                                        }}
+
                                     />
+                                    <Errors
+                                        className="text-danger"
+                                        model=".name"
+                                        messages={{
+                                            required: 'Yêu cầu nhập',
+                                            minLength: 'Yêu cầu nhập nhiều hơn 2 ký tự',
+                                            maxLength: 'Yêu cầu nhập ít hơn 30 ký tự'
+                                        }}
+                                     />
                                 </Col>
                             </Row> <br />
                             <Row className="form-group">
@@ -63,6 +82,16 @@ class Add extends Component {
                                         value={this.state.tenState}
                                         className="form-control" 
                                         onChange={this.onChange}
+                                        validators={{
+                                            required
+                                        }}
+                                    />
+                                    <Errors
+                                        className="text-danger"
+                                        model=".doB"
+                                        messages={{
+                                            required: 'Yêu cầu nhập',
+                                        }}
                                     />
                                 </Col>
                             </Row> <br />
@@ -73,9 +102,19 @@ class Add extends Component {
                                         value={this.state.tenState}
                                         className="form-control" 
                                         onChange={this.onChange}
+                                        validators={{
+                                            required
+                                        }}
+                                    />
+                                    <Errors
+                                        className="text-danger"
+                                        model=".startDate"
+                                        messages={{
+                                            required: 'Yêu cầu nhập',
+                                        }}
                                     />
                                 </Col>
-                            </Row>
+                            </Row> <br />
                             <Row className="form-group">
                                 <Col md={3}><Label>Phòng ban</Label></Col>
                                 <Col md={9}>
@@ -107,7 +146,7 @@ class Add extends Component {
                                         placeholder="1.0"
                                     />
                                 </Col>
-                            </Row>
+                            </Row> <br />
                             <Row className="form-group">
                                 <Col md={3}><Label>Số ngày đã làm thêm</Label></Col>
                                 <Col md={9}>
@@ -116,7 +155,7 @@ class Add extends Component {
                                         onChange={this.onChange}
                                     />
                                 </Col>
-                            </Row>
+                            </Row> <br />
                             <Button type='submit' color="primary" onClick={this.toggleModal}>Thêm</Button>
                         </LocalForm>
                     </ModalBody>
