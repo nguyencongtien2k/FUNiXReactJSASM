@@ -13,8 +13,6 @@ const mapStateToProps = state => {
     }
 }
 
-var xID = 15;
-
 class StaffList extends Component {
     constructor(props) {
         super(props);
@@ -30,7 +28,6 @@ class StaffList extends Component {
 
     onSubmit = (data) => {
         var newStaff = {
-            id: this.generateID(),
             name: data.name,
             doB: data.doB,
             salaryScale: data.salaryScale,
@@ -43,26 +40,25 @@ class StaffList extends Component {
             overTime: data.overTime,
             image: '/assets/images/alberto.png'
         };
+
+        newStaff.id = this.props.staffs.length;
+        this.props.staffs.forEach(staff => {
+            if (staff.id > newStaff.id) {
+                newStaff.id = staff.id + 1;
+            }});
         this.props.departments.map(depart => {
             if(data.department == depart.name) {
                 return (
-                    depart.numberOfStaff += 1
+                    depart.numberOfStaff++,
+                    newStaff.department.id = depart.id
                 )
-            }
-        })
+            }});
         this.props.staffs.push(newStaff);
         this.setState({staffs: this.props.staffs});
 
         localStorage.setItem('staffs', JSON.stringify(this.props.staffs));
     }
 
-    s4() {
-        return (xID += 1);
-    }
-
-    generateID () {
-        return this.s4();
-    }
 
     renderStaffList(staff) {
         return (
