@@ -9,6 +9,7 @@ import { withRouter } from 'react-router-dom';
 const mapStateToProps = state => {
     return {
         staffs: state.staffs,
+        departments: state.departments
     }
 }
 
@@ -42,6 +43,13 @@ class StaffList extends Component {
             overTime: data.overTime,
             image: '/assets/images/alberto.png'
         };
+        this.props.departments.map(depart => {
+            if(data.department == depart.name) {
+                return (
+                    depart.numberOfStaff += 1
+                )
+            }
+        })
         this.props.staffs.push(newStaff);
         this.setState({staffs: this.props.staffs});
 
