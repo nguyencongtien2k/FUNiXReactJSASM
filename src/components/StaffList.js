@@ -1,9 +1,16 @@
 import React, { Component } from 'react';
 import { Card, CardImg } from 'reactstrap';
 import { Link } from 'react-router-dom';
-import { STAFFS } from '../shared/staffs';
 import Search from './Search';
 import Add from './Add';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+
+const mapStateToProps = state => {
+    return {
+        staffs: state.staffs,
+    }
+}
 
 var xID = 16;
 
@@ -12,7 +19,6 @@ class StaffList extends Component {
         super(props);
 
         this.state = {
-            staffs: STAFFS,
             keyword: ''
         }
     }
@@ -22,7 +28,6 @@ class StaffList extends Component {
     }
 
     onSubmit = (data) => {
-        var { staffs } = this.state;
         var newStaff = {
             id: this.generateID(),
             name: data.name,
@@ -37,10 +42,10 @@ class StaffList extends Component {
             overTime: data.overTime,
             image: '/assets/images/alberto.png'
         };
-        staffs.push(newStaff);
-        this.setState({staffs: staffs});
+        this.props.staffs.push(newStaff);
+        this.setState({staffs: this.props.staffs});
 
-        localStorage.setItem('staffs', JSON.stringify(staffs));
+        localStorage.setItem('staffs', JSON.stringify(this.props.staffs));
     }
 
     s4() {
@@ -64,7 +69,7 @@ class StaffList extends Component {
       
     render() {
         
-        const staffList = this.state.staffs.filter((staff) => {
+        const staffList = this.props.staffs.filter((staff) => {
             return (
                 staff.name.toLowerCase().indexOf(this.state.keyword) !== -1
             )
@@ -102,4 +107,4 @@ class StaffList extends Component {
 }
     
     
-export default StaffList;
+export default withRouter(connect(mapStateToProps)(StaffList));

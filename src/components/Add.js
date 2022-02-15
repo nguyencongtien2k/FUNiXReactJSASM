@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, Col, Label, Form, FormGroup, Input, FormFeedback } from 'reactstrap';
 import { DEPARTMENTS } from '../shared/staffs';
-import { Control, LocalForm, Errors } from 'react-redux-form';
 
 class Add extends Component {
 
