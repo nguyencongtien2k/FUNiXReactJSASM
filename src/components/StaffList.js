@@ -12,7 +12,7 @@ const mapStateToProps = state => {
     }
 }
 
-var xID = 16;
+var xID = 15;
 
 class StaffList extends Component {
     constructor(props) {

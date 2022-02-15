@@ -1,14 +1,19 @@
 import React, { Component } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, Col, Label, Form, FormGroup, Input, FormFeedback } from 'reactstrap';
-import { DEPARTMENTS } from '../shared/staffs';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+
+const mapStateToProps = state => {
+    return {
+        departments: state.departments
+    }
+}
 
 class Add extends Component {
-
     constructor(props) {
         super(props);
 
         this.state = {
-            departments: DEPARTMENTS,
             name: '',
             doB: '',
             salaryScale: 1,
@@ -148,7 +153,7 @@ class Add extends Component {
                                                 className="form-control" 
                                                 value={this.state.department}
                                                 onChange={this.onChange} >
-                                            {this.state.departments.map(department => (
+                                            {this.props.departments.map(department => (
                                                 <option key={department.id}>{department.name}</option>
                                             ))}
                                         </Input>
@@ -205,4 +210,4 @@ class Add extends Component {
     }
 }
 
-export default Add;
+export default withRouter(connect(mapStateToProps)(Add));
