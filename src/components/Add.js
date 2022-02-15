@@ -93,9 +93,7 @@ class Add extends Component {
                     <ModalBody>
                         <Form onSubmit = {this.onSubmit}>
                             <FormGroup className="row">
-                                <Col md={3}>
-                                    <Label>Tên</Label>
-                                </Col>
+                                <Col md={3}><Label>Tên</Label></Col>
                                 <Col md={9}>
                                     <Input type="text" name="name"
                                         className="form-control" 
@@ -109,9 +107,7 @@ class Add extends Component {
                                 </Col>
                             </FormGroup>
                             <FormGroup className="row">
-                                <Col md={3}>
-                                    <Label>Ngày sinh</Label>
-                                </Col>
+                                <Col md={3}><Label>Ngày sinh</Label></Col>
                                 <Col md={9}>
                                     <Input type="date" name="doB"
                                         className="form-control" 
@@ -125,9 +121,7 @@ class Add extends Component {
                                 </Col>
                             </FormGroup>
                             <FormGroup className="row">
-                                <Col md={3}>
-                                    <Label>Ngày vào công ty</Label>
-                                </Col>
+                                <Col md={3}><Label>Ngày vào công ty</Label></Col>
                                 <Col md={9}>
                                     <Input type="date" name="startDate"
                                         className="form-control" 
@@ -141,9 +135,7 @@ class Add extends Component {
                                 </Col>
                             </FormGroup>
                             <FormGroup className="row">
-                                <Col md={3}>
-                                    <Label>Phòng ban</Label>
-                                </Col>
+                                <Col md={3}><Label>Phòng ban</Label></Col>
                                 <Col md={9}>
                                     <Input  type="select" name="department" 
                                             className="form-control" 
@@ -156,9 +148,7 @@ class Add extends Component {
                                 </Col>
                             </FormGroup>
                             <FormGroup className="row">
-                                <Col md={3}>
-                                    <Label>Hệ số lương</Label>
-                                </Col>
+                                <Col md={3}><Label>Hệ số lương</Label></Col>
                                 <Col md={9}>
                                     <Input type="text" name="salaryScale"
                                         className="form-control" 
@@ -169,9 +159,7 @@ class Add extends Component {
                                 </Col>
                             </FormGroup>
                             <FormGroup className="row">
-                                <Col md={3}>
-                                    <Label>Số ngày nghỉ còn lại</Label>
-                                </Col>
+                                <Col md={3}><Label>Số ngày nghỉ còn lại</Label></Col>
                                 <Col md={9}>
                                     <Input type="text" name="annualLeave"
                                         className="form-control" 
@@ -182,9 +170,7 @@ class Add extends Component {
                                 </Col>
                             </FormGroup>
                             <FormGroup className="row">
-                                <Col md={3}>
-                                    <Label>Số ngày đã làm thêm</Label>
-                                </Col>
+                                <Col md={3}><Label>Số ngày đã làm thêm</Label></Col>
                                 <Col md={9}>
                                     <Input type="text" name="overTime"
                                         className="form-control" 
