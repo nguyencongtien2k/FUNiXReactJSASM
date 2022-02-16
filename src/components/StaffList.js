@@ -47,7 +47,7 @@ class StaffList extends Component {
             if (staff.id > newStaff.id) {
                 newStaff.id = staff.id + 1;
             }});
-        this.props.departments.map(depart => {
+        this.props.departments.departments.map(depart => {
             if(data.department === depart.name) {
                 return (
                     depart.numberOfStaff++,

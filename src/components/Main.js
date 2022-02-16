@@ -7,7 +7,7 @@ import Header from './Header';
 import Footer from './Footer';
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { fetchStaffs } from '../redux/ActionCreators';
+import { fetchStaffs, fetchDepartments } from '../redux/ActionCreators';
 
 const mapStateToProps = state => {
   return {
@@ -16,13 +16,15 @@ const mapStateToProps = state => {
 }};
 
 const mapDispatchToProps = dispatch => ({
-    fetchStaffs: () => {dispatch(fetchStaffs())}
+    fetchStaffs: () => {dispatch(fetchStaffs())},
+    fetchDepartments: () => {dispatch(fetchDepartments())}
 });
 
 class Main extends Component {
 
     componentDidMount() {
         this.props.fetchStaffs();
+        this.props.fetchDepartments();
     }
 
     render() {

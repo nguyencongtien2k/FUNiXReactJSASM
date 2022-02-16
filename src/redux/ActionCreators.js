@@ -1,5 +1,5 @@
 import * as ActionTypes from './ActionTypes';
-import { STAFFS } from '../shared/staffs';
+import { STAFFS, DEPARTMENTS } from '../shared/staffs';
 
 export const fetchStaffs = () => (dispatch) => {
     dispatch(staffsLoading(true));
@@ -20,5 +20,27 @@ export const  staffsFailed = (errmess) => ({
 
 export const  addStaffs = (staffs) => ({
     type: ActionTypes.ADD_STAFFS,
+    payload: staffs
+});
+
+export const fetchDepartments = () => (dispatch) => {
+    dispatch(departmentsLoading(true));
+
+    setTimeout(() => {
+        dispatch(addDepartments(DEPARTMENTS))
+    }, 2000)
+}
+
+export const  departmentsLoading = () => ({
+    type: ActionTypes.DEPARTMENTS_LOADING
+});
+
+export const  departmentsFailed = (errmess) => ({
+    type: ActionTypes.DEPARTMENTS_FAILED,
+    payload: errmess
+});
+
+export const  addDepartments = (staffs) => ({
+    type: ActionTypes.ADD_DEPARTMENTS,
     payload: staffs
 });

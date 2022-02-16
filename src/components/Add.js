@@ -121,7 +121,7 @@ class Add extends Component {
                                     <Control.select model='.department' name="department" 
                                             className="form-control" 
                                             onChange={this.onChange} >
-                                        {this.props.departments.map(depart => (
+                                        {this.props.departments.departments.map(depart => (
                                             <option key={depart.id}>{depart.name}</option>
                                         ))}
                                     </Control.select>
