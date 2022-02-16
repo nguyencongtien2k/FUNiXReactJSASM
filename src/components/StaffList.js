@@ -5,6 +5,7 @@ import Search from './Search';
 import Add from './Add';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import { Loading } from './Loading';
 
 const mapStateToProps = state => {
     return {
@@ -41,22 +42,22 @@ class StaffList extends Component {
             image: '/assets/images/alberto.png'
         };
 
-        newStaff.id = this.props.staffs.length;
-        this.props.staffs.forEach(staff => {
+        newStaff.id = this.props.staffs.staffs.length;
+        this.props.staffs.staffs.forEach(staff => {
             if (staff.id > newStaff.id) {
                 newStaff.id = staff.id + 1;
             }});
         this.props.departments.map(depart => {
-            if(data.department == depart.name) {
+            if(data.department === depart.name) {
                 return (
                     depart.numberOfStaff++,
                     newStaff.department.id = depart.id
                 )
             }});
-        this.props.staffs.push(newStaff);
-        this.setState({staffs: this.props.staffs});
+        this.props.staffs.staffs.push(newStaff);
+        this.setState({staffs: this.props.staffs.staffs});
 
-        localStorage.setItem('staffs', JSON.stringify(this.props.staffs));
+        localStorage.setItem('staffs', JSON.stringify(this.props.staffs.staffs));
     }
 
 
@@ -73,7 +74,7 @@ class StaffList extends Component {
       
     render() {
         
-        const staffList = this.props.staffs.filter((staff) => {
+        const staffList = this.props.staffs.staffs.filter((staff) => {
             return (
                 staff.name.toLowerCase().indexOf(this.state.keyword) !== -1
             )
@@ -84,29 +85,47 @@ class StaffList extends Component {
                 </div>
             );
         });
-      
-        return (
-            <div className="container"> <br />
-                <div className="row">
-                    <div className="col-12 col-sm-12 col-md-6">
-                        <div className="row">
-                            <div className="col-10 col-sm-10 col-md-10">
-                                <h3>Nhân Viên</h3>
-                            </div>
-                            <div className="col-2 col-sm-2 col-md-2">
-                                <Add onSubmit = {this.onSubmit} />
+
+        if(this.props.staffs.isLoading) {
+            return (
+                <div className="container">
+                    <div className="row">
+                        <Loading />
+                    </div>
+                </div>
+            )
+        } else if (this.props.staffs.errMess) {
+            return (
+                <div className="container">
+                    <div className="row">
+                        <h4>{this.props.staffs.errMess}</h4>
+                    </div>
+                </div>
+            )
+        } else {
+            return (
+                <div className="container"> <br />
+                    <div className="row">
+                        <div className="col-12 col-sm-12 col-md-6">
+                            <div className="row">
+                                <div className="col-10 col-sm-10 col-md-10">
+                                    <h3>Nhân Viên</h3>
+                                </div>
+                                <div className="col-2 col-sm-2 col-md-2">
+                                    <Add onSubmit = {this.onSubmit} />
+                                </div>
                             </div>
                         </div>
+                        <div className="col-12 col-sm-12 col-md-6">
+                            <Search onSearch={this.onSearch}/>
+                        </div>
+                    </div> <hr />
+                    <div className="row">
+                        {staffList}
                     </div>
-                    <div className="col-12 col-sm-12 col-md-6">
-                        <Search onSearch={this.onSearch}/>
-                    </div>
-                </div> <hr />
-                <div className="row">
-                    {staffList}
                 </div>
-            </div>
-        );
+            );
+        }
     }
 }
     

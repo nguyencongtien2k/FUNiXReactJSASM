@@ -23,7 +23,7 @@ import { Link } from 'react-router-dom';
     }
 
     const Payroll = (props) => {
-        const money = props.staffs.map((staff) => {
+        const money = props.staffs.staffs.map((staff) => {
             return(
                 <RenderPayroll  key={staff.id} staff={staff} /> 
             )

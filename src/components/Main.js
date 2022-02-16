@@ -7,19 +7,31 @@ import Header from './Header';
 import Footer from './Footer';
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { fetchStaffs } from '../redux/ActionCreators';
 
 const mapStateToProps = state => {
   return {
     staffs: state.staffs,
     departments: state.departments
-  }
-}
+}};
+
+const mapDispatchToProps = dispatch => ({
+    fetchStaffs: () => {dispatch(fetchStaffs())}
+});
 
 class Main extends Component {
+
+    componentDidMount() {
+        this.props.fetchStaffs();
+    }
+
     render() {
         const StaffWithId = ({match}) => {
             return(
-                <Info staff={this.props.staffs.filter((staff) => staff.id === parseInt(match.params.id,10))[0]} />
+                <Info staff={this.props.staffs.staffs.filter((staff) => staff.id === parseInt(match.params.id,10))[0]} 
+                    isLoading= {this.props.staffs.isLoading}
+                    errMess= {this.props.staffs.errMess}
+                />
             )
         }
 
@@ -39,4 +51,4 @@ class Main extends Component {
     }
 }
 
-export default withRouter(connect(mapStateToProps)(Main));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Main));
