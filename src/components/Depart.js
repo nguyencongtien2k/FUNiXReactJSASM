@@ -7,7 +7,9 @@ import { Link } from 'react-router-dom';
         return (
             <div className='col-12 col-sm-6 col-md-4 mt-3 mb-3'>
                 <Card>
-                    <h3>{depart.name}</h3>
+                    <Link to={`department/${depart.id}`}>
+                        <h3>{depart.name}</h3>
+                    </Link>
                     <CardBody>
                         <CardText><strong>Số lượng nhân viên: {depart.numberOfStaff}</strong></CardText>
                     </CardBody>
@@ -44,6 +46,9 @@ import { Link } from 'react-router-dom';
         } else {
             return (
                 <div className="container">
+                    <div className="row">
+                        <h3>Phòng Ban</h3> <hr />
+                    </div>
                     <div className="row">
                         {depart}
                     </div>

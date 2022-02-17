@@ -5,6 +5,7 @@ import Payroll from './Payroll';
 import Info from './Info';
 import Header from './Header';
 import Footer from './Footer';
+import DepartStaff from './DepartStaff';
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { fetchStaffs, fetchDepartments } from '../redux/ActionCreators';
@@ -37,6 +38,15 @@ class Main extends Component {
             )
         }
 
+        const DepartWithId = ({match}) => {
+            return(
+                <DepartStaff
+                    dept={this.props.departments.departments.filter((dept) => dept.id === match.params.deptId)[0]}
+                    staff={this.props.staffs.staffs.filter((staff) => staff.department.id === match.params.deptId)}
+                />
+            )
+        }
+        
         return(
             <div>
                 <Header />
@@ -44,6 +54,7 @@ class Main extends Component {
                     <Route exact path="/staffs" component={() => <StaffList staffs={this.props.staffs} /> } />
                     <Route path="/staffs/:id" component={StaffWithId} />
                     <Route exact path="/department" component={() => <Depart departments={this.props.departments} /> } />
+                    <Route path='/department/:deptId' component={DepartWithId} />
                     <Route exact path="/payroll" component={() => <Payroll staffs={this.props.staffs} /> } />
                     <Redirect to='/staffs' />
                 </Switch>
