@@ -1,7 +1,8 @@
 import React from 'react';
 import { Card, CardBody, CardText } from "reactstrap";
 import { Loading } from './Loading';
-    
+import { Link } from 'react-router-dom';
+
     function RenderDepart({depart}) {
         return (
             <div className='col-12 col-sm-6 col-md-4 mt-3 mb-3'>

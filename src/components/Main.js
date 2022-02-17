@@ -43,7 +43,7 @@ class Main extends Component {
                 <Switch>
                     <Route exact path="/staffs" component={() => <StaffList staffs={this.props.staffs} /> } />
                     <Route path="/staffs/:id" component={StaffWithId} />
-                    <Route exact path="/depart" component={() => <Depart departments={this.props.departments} /> } />
+                    <Route exact path="/department" component={() => <Depart departments={this.props.departments} /> } />
                     <Route exact path="/payroll" component={() => <Payroll staffs={this.props.staffs} /> } />
                     <Redirect to='/staffs' />
                 </Switch>
