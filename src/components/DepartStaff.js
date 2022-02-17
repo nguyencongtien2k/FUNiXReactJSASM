@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, CardImg, CardBody, Breadcrumb, BreadcrumbItem } from "reactstrap";
+import { Card, CardImg, Breadcrumb, BreadcrumbItem } from "reactstrap";
 import { Link } from "react-router-dom";
 
 const RenderStaffItem = ({staff}) => {

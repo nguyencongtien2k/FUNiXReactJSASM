@@ -40,7 +40,7 @@ export const  departmentsFailed = (errmess) => ({
     payload: errmess
 });
 
-export const  addDepartments = (staffs) => ({
+export const  addDepartments = (departments) => ({
     type: ActionTypes.ADD_DEPARTMENTS,
-    payload: staffs
+    payload: departments
 });
