@@ -1,6 +1,7 @@
 import React from 'react';
 import { Card, CardBody, CardText, Breadcrumb, BreadcrumbItem } from "reactstrap";
 import { Link } from 'react-router-dom';
+import { Loading } from './Loading';
 
     function RenderPayroll({staff}) {
         const basicSalary = 3000000;
@@ -28,22 +29,41 @@ import { Link } from 'react-router-dom';
                 <RenderPayroll  key={staff.id} staff={staff} /> 
             )
         });
-        
-        return (
-            <div className="container">
-                <div className="row">
-                    <div className="col-12">
-                        <Breadcrumb>
-                            <BreadcrumbItem><Link to='/staffs'>Nhân Viên</Link></BreadcrumbItem>
-                            <BreadcrumbItem active>Bảng Lương</BreadcrumbItem>
-                        </Breadcrumb>
+
+        if (props.staffs.isLoading) {
+            return(
+                <div className="container">
+                    <div className="row">            
+                        <Loading />
                     </div>
                 </div>
-                <div className="row">
-                    {money}
+            );
+        }
+        else if (props.staffs.errMess) {
+            return(
+                <div className="container">
+                    <div className="row">            
+                        <h4>{props.errMess}</h4>
+                    </div>
                 </div>
-            </div>
-        )
+            );
+        }
+        else
+            return (
+                <div className="container">
+                    <div className="row">
+                        <div className="col-12">
+                            <Breadcrumb>
+                                <BreadcrumbItem><Link to='/staffs'>Nhân Viên</Link></BreadcrumbItem>
+                                <BreadcrumbItem active>Bảng Lương</BreadcrumbItem>
+                            </Breadcrumb>
+                        </div>
+                    </div>
+                    <div className="row">
+                        {money}
+                    </div>
+                </div>
+            )
     }
 
     export default Payroll;

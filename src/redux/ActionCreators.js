@@ -44,3 +44,25 @@ export const  addDepartments = (departments) => ({
     type: ActionTypes.ADD_DEPARTMENTS,
     payload: departments
 });
+
+export const fetchPayrolls = () => (dispatch) => {
+    dispatch(payrollsLoading(true));
+
+    setTimeout(() => {
+        dispatch(addPayrolls(STAFFS))
+    }, 2000)
+}
+
+export const  payrollsLoading = () => ({
+    type: ActionTypes.PAYROLLS_LOADING
+});
+
+export const  payrollsFailed = (errmess) => ({
+    type: ActionTypes.PAYROLLS_FAILED,
+    payload: errmess
+});
+
+export const  addPayrolls = (payrolls) => ({
+    type: ActionTypes.ADD_PAYROLLS,
+    payload: payrolls
+});
