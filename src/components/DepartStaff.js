@@ -5,17 +5,17 @@ import { Link } from "react-router-dom";
 const RenderStaffItem = ({staff}) => {
     return (
             <Card>
+            <Link to={`/staffs/${staff.id}`}>
                 <CardImg width="100%" src={staff.image} alt={staff.name} />
-                <CardBody>
-                    <h3>{staff.name}</h3>
-                </CardBody>
+            </Link>
+                <h4 className='nameStaff'>{staff.name}</h4>
             </Card>
     );
 };
 
 const DepartStaff = (props) => {
     const staffs = props.staff.map((val) => (
-        <div className="col-6 col-md-4 col-lg-2 mt-3 mb-3" key={val.id}>
+        <div className="col-12 col-sm-4 col-md-2 mt-3 mb-3" key={val.id}>
             <RenderStaffItem staff={val} />
         </div>
     ));
@@ -34,7 +34,7 @@ const DepartStaff = (props) => {
                         <h3>{props.dept.name}</h3> <hr />
                     </div>
                 </div>
-                <div className="row mb-3">{staffs}</div>
+                <div className="row">{staffs}</div>
             </div>
         );
     } else {
