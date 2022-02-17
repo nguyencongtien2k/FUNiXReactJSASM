@@ -27,7 +27,7 @@ const DepartStaff = (props) => {
                 <div className="row">
                     <Breadcrumb>
                         <BreadcrumbItem>
-                            <Link to="/department">Phòng ban</Link>
+                            <Link to="/departments">Phòng ban</Link>
                         </BreadcrumbItem>
                         <BreadcrumbItem active>{props.dept.name}</BreadcrumbItem>
                     </Breadcrumb>

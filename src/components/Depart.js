@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
         return (
             <div className='col-12 col-sm-6 col-md-4 mt-3 mb-3'>
                 <Card>
-                    <Link to={`department/${depart.id}`}>
+                    <Link to={`departments/${depart.id}`}>
                         <h3>{depart.name}</h3>
                     </Link>
                     <CardBody>
