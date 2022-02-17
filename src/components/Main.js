@@ -34,18 +34,14 @@ class Main extends Component {
                 <Info staff={this.props.staffs.staffs.filter((staff) => staff.id === parseInt(match.params.id,10))[0]} 
                     isLoading= {this.props.staffs.isLoading}
                     errMess= {this.props.staffs.errMess}
-                />
-            )
-        }
+            />)}
 
         const DepartWithId = ({match}) => {
             return(
                 <DepartStaff
                     dept={this.props.departments.departments.filter((dept) => dept.id === match.params.deptId)[0]}
                     staff={this.props.staffs.staffs.filter((staff) => staff.department.id === match.params.deptId)}
-                />
-            )
-        }
+            />)}
         
         return(
             <div>

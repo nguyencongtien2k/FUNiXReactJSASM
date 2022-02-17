@@ -3,7 +3,6 @@ import { Card, CardImg, CardBody, Breadcrumb, BreadcrumbItem } from "reactstrap"
 import { Link } from "react-router-dom";
 
 const RenderStaffItem = ({staff}) => {
-    console.log(staff);
     return (
             <Card>
                 <CardImg width="100%" src={staff.image} alt={staff.name} />
