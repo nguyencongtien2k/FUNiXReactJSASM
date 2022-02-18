@@ -33,10 +33,7 @@ class StaffList extends Component {
             doB: data.doB,
             salaryScale: data.salaryScale,
             startDate: data.startDate,
-            department: {
-                id: '',
-                name: data.department
-            },
+            departmentId: data.department,
             annualLeave: data.annualLeave,
             overTime: data.overTime,
             image: '/asset/images/alberto.png'
@@ -51,7 +48,7 @@ class StaffList extends Component {
             if(data.department === depart.name) {
                 return (
                     depart.numberOfStaff++,
-                    newStaff.department.id = depart.id
+                    newStaff.departmentId = depart.id
                 )
             }});
         this.props.staffs.staffs.push(newStaff);
