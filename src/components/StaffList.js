@@ -39,7 +39,7 @@ class StaffList extends Component {
             },
             annualLeave: data.annualLeave,
             overTime: data.overTime,
-            image: '/assets/images/alberto.png'
+            image: '/asset/images/alberto.png'
         };
 
         newStaff.id = this.props.staffs.staffs.length;

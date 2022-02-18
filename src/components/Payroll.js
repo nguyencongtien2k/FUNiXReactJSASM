@@ -48,7 +48,7 @@ import { Loading } from './Loading';
                 </div>
             );
         }
-        else
+        else {
             return (
                 <div className="container">
                     <div className="row">
@@ -64,6 +64,7 @@ import { Loading } from './Loading';
                     </div>
                 </div>
             )
+        }
     }
 
     export default Payroll;

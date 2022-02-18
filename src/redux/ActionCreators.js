@@ -1,12 +1,12 @@
 import * as ActionTypes from './ActionTypes';
-import { STAFFS, DEPARTMENTS } from '../shared/staffs';
+import { baseUrl } from '../shared/baseUrl';
 
 export const fetchStaffs = () => (dispatch) => {
     dispatch(staffsLoading(true));
 
-    setTimeout(() => {
-        dispatch(addStaffs(STAFFS))
-    }, 2000)
+    return fetch(baseUrl + 'staffs')
+        .then(response => response.json())
+        .then(staffs => dispatch(addStaffs(staffs)))
 }
 
 export const  staffsLoading = () => ({
@@ -26,9 +26,9 @@ export const  addStaffs = (staffs) => ({
 export const fetchDepartments = () => (dispatch) => {
     dispatch(departmentsLoading(true));
 
-    setTimeout(() => {
-        dispatch(addDepartments(DEPARTMENTS))
-    }, 2000)
+    return fetch(baseUrl + 'departments')
+        .then(response => response.json())
+        .then(departments => dispatch(addDepartments(departments)))
 }
 
 export const  departmentsLoading = () => ({
@@ -48,9 +48,9 @@ export const  addDepartments = (departments) => ({
 export const fetchPayrolls = () => (dispatch) => {
     dispatch(payrollsLoading(true));
 
-    setTimeout(() => {
-        dispatch(addPayrolls(STAFFS))
-    }, 2000)
+    return fetch(baseUrl + 'payrolls')
+        .then(response => response.json())
+        .then(payrolls => dispatch(addPayrolls(payrolls)))
 }
 
 export const  payrollsLoading = () => ({
