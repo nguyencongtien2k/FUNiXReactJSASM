@@ -9,6 +9,7 @@ import DepartStaff from './DepartStaff';
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { fetchStaffs, fetchDepartments, fetchStaffsSalary } from '../redux/ActionCreators';
+import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
 const mapStateToProps = state => {
   return {
@@ -50,14 +51,18 @@ class Main extends Component {
         return(
             <div>
                 <Header />
-                <Switch>
-                    <Route exact path="/staffs" component={() => <StaffList staffs={this.props.staffs} /> } />
-                    <Route path="/staffs/:staffId" component={StaffWithId} />
-                    <Route exact path="/departments" component={() => <Depart departments={this.props.departments} /> } />
-                    <Route path='/departments/:deptId' component={DepartWithId} />
-                    <Route exact path="/payroll" component={() => <Payroll staffs={this.props.staffs} /> } />
-                    <Redirect to='/staffs' />
-                </Switch>
+                <TransitionGroup>
+                    <CSSTransition key={this.props.location.key} classNames="page" timeout={300}>
+                        <Switch location={this.props.location}>
+                            <Route exact path="/staffs" component={() => <StaffList staffs={this.props.staffs} /> } />
+                            <Route path="/staffs/:staffId" component={StaffWithId} />
+                            <Route exact path="/departments" component={() => <Depart departments={this.props.departments} /> } />
+                            <Route path='/departments/:deptId' component={DepartWithId} />
+                            <Route exact path="/payroll" component={() => <Payroll staffs={this.props.staffs} /> } />
+                            <Redirect to='/staffs' />
+                        </Switch>
+                    </CSSTransition>
+                </TransitionGroup>
                 <Footer />
             </div>
         )

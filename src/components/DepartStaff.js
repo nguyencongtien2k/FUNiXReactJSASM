@@ -1,15 +1,22 @@
 import React from "react";
 import { Card, CardImg, Breadcrumb, BreadcrumbItem } from "reactstrap";
 import { Link } from "react-router-dom";
+import { FadeTransform } from 'react-animation-components';
 
 const RenderStaffItem = ({staff}) => {
     return (
+        <FadeTransform
+            in
+            transformProps={{
+                exitTransform: 'scale(0.5) translateY(-50%)'
+            }}>
             <Card>
             <Link to={`/staffs/${staff.id}`}>
                 <CardImg width="100%" src={staff.image} alt={staff.name} />
             </Link>
                 <h4 className='nameStaff'>{staff.name}</h4>
             </Card>
+        </FadeTransform>
     );
 };
 

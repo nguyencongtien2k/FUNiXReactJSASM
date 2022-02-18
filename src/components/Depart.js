@@ -1,18 +1,25 @@
 import React from 'react';
 import { Card, CardBody, CardText } from "reactstrap";
 import { Link } from 'react-router-dom';
+import { FadeTransform } from 'react-animation-components';
 
     function RenderDepart({depart}) {
         return (
             <div className='col-12 col-sm-6 col-md-4 mt-3 mb-3'>
-                <Card>
-                    <Link to={`departments/${depart.id}`}>
-                        <h3>{depart.name}</h3>
-                    </Link>
-                    <CardBody>
-                        <CardText><strong>Số lượng nhân viên: {depart.numberOfStaff}</strong></CardText>
-                    </CardBody>
-                </Card>
+                <FadeTransform
+                    in
+                    transformProps={{
+                        exitTransform: 'scale(0.5) translateY(-50%)'
+                    }}>
+                    <Card>
+                        <Link to={`departments/${depart.id}`}>
+                            <h3>{depart.name}</h3>
+                        </Link>
+                        <CardBody>
+                            <CardText><strong>Số lượng nhân viên: {depart.numberOfStaff}</strong></CardText>
+                        </CardBody>
+                    </Card>
+                </FadeTransform>
             </div>
         )
     }

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Card, CardBody, CardText, Breadcrumb, BreadcrumbItem } from "reactstrap";
 import { Link } from 'react-router-dom';
+import { FadeTransform } from 'react-animation-components';
 
     function RenderPayroll({staff}) {
         const basicSalary = 3000000;
@@ -8,6 +9,11 @@ import { Link } from 'react-router-dom';
         const salary = (staff.salaryScale * basicSalary) + (staff.overTime * overTimeSalary);
         return(
             <div className="col-12 col-sm-6 col-md-4 mt-3 mb-3">
+            <FadeTransform
+                in
+                transformProps={{
+                    exitTransform: 'scale(0.5) translateY(-50%)'
+                }}>
                 <Card className="color1">
                     <h3 className="nag">{staff.name}</h3>
                     <CardBody>
@@ -17,6 +23,7 @@ import { Link } from 'react-router-dom';
                         <CardText className="lag ml-2">Lương: {salary}</CardText>
                     </CardBody>
                 </Card>
+            </FadeTransform>
             </div>
         )
     }

@@ -6,6 +6,7 @@ import Add from './Add';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { Loading } from './Loading';
+import { FadeTransform } from 'react-animation-components';
 
 const mapStateToProps = state => {
     return {
@@ -60,12 +61,18 @@ class StaffList extends Component {
 
     renderStaffList(staff) {
         return (
-            <Card>
-                <Link to={`/staffs/${staff.id}`}>
-                    <CardImg src={staff.image} alt={staff.name} />
-                </Link>
-                    <h4 className='nameStaff'>{staff.name}</h4>
-            </Card>
+            <FadeTransform
+                in
+                transformProps={{
+                    exitTransform: 'scale(0.5) translateY(-50%)'
+                }}>
+                <Card>
+                    <Link to={`/staffs/${staff.id}`}>
+                        <CardImg src={staff.image} alt={staff.name} />
+                    </Link>
+                        <h4 className='nameStaff'>{staff.name}</h4>
+                </Card>
+            </FadeTransform>
         )
       }
       

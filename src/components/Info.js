@@ -3,21 +3,32 @@ import { CardImg, Breadcrumb, BreadcrumbItem } from 'reactstrap';
 import dateFormat from 'dateformat';
 import { Link } from 'react-router-dom';
 import { Loading } from './Loading';
+import { FadeTransform, Fade, Stagger } from 'react-animation-components';
 
     function RenderInfo({staff, department}) {
         if (staff != null && department != null) {
             return (
                 <div className="row">
                     <div className='col-12 col-sm-6 col-md-6 mb-3'>
-                        <CardImg src={staff.image} alt={staff.name} />
+                        <FadeTransform
+                            in
+                            transformProps={{
+                                exitTransform: 'scale(0.5) translateY(-50%)'
+                            }}>
+                            <CardImg src={staff.image} alt={staff.name} />
+                        </FadeTransform>
                     </div>
                     <div className='col-12 col-sm-6 col-md-6 mb-3'>
-                        <h4>Họ và tên: {staff.name}</h4>
-                        <p>Ngày sinh: {dateFormat(staff.doB, "dd/mm/yyyy")}</p>
-                        <p>Ngày vào công ty: {dateFormat(staff.startDate, "dd/mm/yyyy")}</p>
-                        <p>Phòng ban: {department.name}</p>
-                        <p>Số ngày nghỉ còn lại: {staff.annualLeave}</p>
-                        <p>Số ngày đã làm thêm: {staff.overTime}</p>
+                        <Stagger in>
+                            <Fade in>
+                                <h4>Họ và tên: {staff.name}</h4>
+                                <p>Ngày sinh: {dateFormat(staff.doB, "dd/mm/yyyy")}</p>
+                                <p>Ngày vào công ty: {dateFormat(staff.startDate, "dd/mm/yyyy")}</p>
+                                <p>Phòng ban: {department.name}</p>
+                                <p>Số ngày nghỉ còn lại: {staff.annualLeave}</p>
+                                <p>Số ngày đã làm thêm: {staff.overTime}</p>
+                            </Fade>
+                        </Stagger>
                     </div>
                 </div>
             )
