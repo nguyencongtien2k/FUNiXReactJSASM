@@ -1,7 +1,6 @@
 import React from 'react';
 import { Card, CardBody, CardText, Breadcrumb, BreadcrumbItem } from "reactstrap";
 import { Link } from 'react-router-dom';
-import { Loading } from './Loading';
 
     function RenderPayroll({staff}) {
         const basicSalary = 3000000;
@@ -20,51 +19,29 @@ import { Loading } from './Loading';
                 </Card>
             </div>
         )
-        
     }
 
     const Payroll = (props) => {
         const money = props.staffs.staffs.map((staff) => {
             return(
-                <RenderPayroll  key={staff.id} staff={staff} /> 
+                <RenderPayroll key={staff.id} staff={staff} /> 
             )
         });
-
-        if (props.staffs.isLoading) {
-            return(
-                <div className="container">
-                    <div className="row">            
-                        <Loading />
+        return (
+            <div className="container">
+                <div className="row">
+                    <div className="col-12">
+                        <Breadcrumb>
+                            <BreadcrumbItem><Link to='/staffs'>Nhân Viên</Link></BreadcrumbItem>
+                            <BreadcrumbItem active>Bảng Lương</BreadcrumbItem>
+                        </Breadcrumb>
                     </div>
                 </div>
-            );
-        }
-        else if (props.staffs.errMess) {
-            return(
-                <div className="container">
-                    <div className="row">            
-                        <h4>{props.errMess}</h4>
-                    </div>
+                <div className="row">
+                    {money}
                 </div>
-            );
-        }
-        else {
-            return (
-                <div className="container">
-                    <div className="row">
-                        <div className="col-12">
-                            <Breadcrumb>
-                                <BreadcrumbItem><Link to='/staffs'>Nhân Viên</Link></BreadcrumbItem>
-                                <BreadcrumbItem active>Bảng Lương</BreadcrumbItem>
-                            </Breadcrumb>
-                        </div>
-                    </div>
-                    <div className="row">
-                        {money}
-                    </div>
-                </div>
-            )
-        }
+            </div>
+        )
     }
 
     export default Payroll;

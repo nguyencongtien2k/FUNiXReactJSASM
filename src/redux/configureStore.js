@@ -1,7 +1,7 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { Staffs } from './staffs';
 import { Departments } from './departments';
-import { Payrolls } from './payrolls';
+import { StaffsSalary } from './staffsSalary';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 
@@ -10,7 +10,7 @@ export const ConfigureStore = () => {
         combineReducers({
             staffs: Staffs,
             departments: Departments,
-            payrolls: Payrolls
+            staffsSalary: StaffsSalary 
         }),
         applyMiddleware(thunk, logger)
     );

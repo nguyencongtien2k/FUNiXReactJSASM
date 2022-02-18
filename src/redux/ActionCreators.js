@@ -45,24 +45,24 @@ export const  addDepartments = (departments) => ({
     payload: departments
 });
 
-export const fetchPayrolls = () => (dispatch) => {
-    dispatch(payrollsLoading(true));
+export const fetchStaffsSalary = () => (dispatch) => {
+    dispatch(staffsSalaryLoading(true));
 
-    return fetch(baseUrl + 'payrolls')
+    return fetch(baseUrl + 'staffsSalary')
         .then(response => response.json())
-        .then(payrolls => dispatch(addPayrolls(payrolls)))
+        .then(staffsSalary => dispatch(addStaffsSalary(staffsSalary)))
 }
 
-export const  payrollsLoading = () => ({
-    type: ActionTypes.PAYROLLS_LOADING
+export const  staffsSalaryLoading = () => ({
+    type: ActionTypes.STAFFSSALARY_LOADING
 });
 
-export const  payrollsFailed = (errmess) => ({
-    type: ActionTypes.PAYROLLS_FAILED,
+export const  staffsSalaryFailed = (errmess) => ({
+    type: ActionTypes.STAFFSSALARY_FAILED,
     payload: errmess
 });
 
-export const  addPayrolls = (payrolls) => ({
-    type: ActionTypes.ADD_PAYROLLS,
-    payload: payrolls
+export const  addStaffsSalary = (staffsSalary) => ({
+    type: ActionTypes.ADD_STAFFSSALARY,
+    payload:staffsSalary 
 });

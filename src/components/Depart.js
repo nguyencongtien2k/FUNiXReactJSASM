@@ -1,6 +1,5 @@
 import React from 'react';
 import { Card, CardBody, CardText } from "reactstrap";
-import { Loading } from './Loading';
 import { Link } from 'react-router-dom';
 
     function RenderDepart({depart}) {
@@ -24,37 +23,16 @@ import { Link } from 'react-router-dom';
                 <RenderDepart key={depart.id} depart={depart} />
             )
         });
-
-        if (props.departments.isLoading) {
-            return(
-                <div className="container">
-                    <div className="row">            
-                        <Loading />
-                    </div>
+        return (
+            <div className="container">
+                <div className="row">
+                    <h3>Phòng Ban</h3> <hr />
                 </div>
-            );
-        } else if (props.departments.errMess) {
-            return(
-                <div className="container">
-                    <div className="row"> 
-                        <div className="col-12">
-                            <h4>{props.departments.errMess}</h4>
-                        </div>
-                    </div>
+                <div className="row">
+                    {depart}
                 </div>
-            );
-        } else {
-            return (
-                <div className="container">
-                    <div className="row">
-                        <h3>Phòng Ban</h3> <hr />
-                    </div>
-                    <div className="row">
-                        {depart}
-                    </div>
-                </div>
-            )
-        }
+            </div>
+        )
     }
 
     export default Depart;
